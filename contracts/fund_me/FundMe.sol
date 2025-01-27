@@ -17,10 +17,14 @@ contract FundMe {
         funders.push(msg.sender);
         addressToAmountFunded[msg.sender] = addressToAmountFunded[msg.sender] + msg.value;
     }
-    // Withdraw funds
-    // function withdraw() public {
 
-    // }
+    // Withdraw funds
+    function withdraw() public {
+        for(uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
+            address funder = funders[funderIndex];
+            addressToAmountFunded[funder] = 0;
+        }
+    }
 }
 
 
